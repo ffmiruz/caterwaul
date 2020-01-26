@@ -48,7 +48,7 @@ const Home = {
     view: function() {
 
 return m("div", {class: "flex h-full"}, 
-        [(Model.mobileSidebar) ? m("button", {onclick:Model.ToggledSidebar, class:"w-full sm:hidden fixed inset-0"},): ""
+        [(Model.mobileSidebar) ? m("button", {onclick:Model.ToggledSidebar, class:"w-full sm:hidden fixed inset-0"},[]): ""
         ,(Model.userDropdown)  ? m("button", {onclick:Model.ToggledUserDropdown, class:"w-full fixed z-20 inset-0"},): ""
         ,m("div", {class: "relative z-10"}, viewSidebar(),)
         ,m("main", {class:"bg-gray-100 w-full"},[viewHeader() 
@@ -59,8 +59,8 @@ return m("div", {class: "flex h-full"},
     }
 }
 const viewSidebar = function(){
-  return m("aside", {class:(Model.mobileSidebar == false) ? "absolute inset-y-0 left-0 sm:static w-80 bg-gray-800 text-white h-full transition offscreen"
-            : "absolute inset-y-0 left-0 sm:static w-80 bg-gray-800 text-white h-full transition"},
+  return m("aside", {class:(Model.mobileSidebar == false) ? "absolute inset-y-0 sm:static w-80 bg-gray-800 text-white h-full transition offscreen"
+            : "absolute inset-y-0 sm:static w-80 bg-gray-800 text-white h-full transition left-0"},
            [m("div", {class:"flex bg-gray-900 py-3 px-5 items-center"}, 
              [m("img", {class:"w-8 h-8", src:Content.sidebar.logo.url, alt:Content.sidebar.logo.alt},)], 
              [m("h3", {class: "pl-4 font-bold text-2xl font-mono"}, Content.sidebar.logo.alt)],
